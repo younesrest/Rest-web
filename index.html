@@ -1,39 +1,37 @@
 <!DOCTYPE html>
-<html lang="es" class="dark-mode">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0f1a">
+    <meta name="theme-color" content="#f1f1f4">
     <title>Younes Laghzali | Ciberseguridad & Redes</title>
     <meta name="description" content="Especialista en Ciberseguridad y Seguridad de Redes. Pentesting, auditorías, SIEM y cumplimiento ISO 27001.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script>if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark-mode'); }</script>
 </head>
 <body>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
     <!-- Preloader -->
     <div id="preloader">
-        <div class="preloader-content">
-            <div class="preloader-logo">
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text">YL</span>
-                <span class="logo-bracket">/&gt;</span>
-            </div>
-            <div class="preloader-bar">
-                <div class="preloader-progress" id="preloader-progress"></div>
-            </div>
-            <p class="preloader-text">Cargando...</p>
+        <div class="boot-box">
+            <div class="boot-mark"><span class="logo-bracket">&lt;</span>YL<span class="logo-bracket">/&gt;</span></div>
+            <div class="boot-progress-track"><div class="boot-progress-fill" id="boot-progress-fill"></div></div>
+            <div class="boot-percent" id="boot-percent">0%</div>
         </div>
     </div>
+
+    <div id="page-content">
 
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <a href="#" class="logo">
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text">YL</span>
-                <span class="logo-bracket">/&gt;</span>
+            <a href="#hero" class="logo">
+                <span class="logo-bracket">&lt;</span><span class="logo-text">YL</span><span class="logo-bracket">/&gt;</span>
             </a>
             <nav id="nav">
                 <ul>
@@ -43,23 +41,21 @@
                     <li><a href="#technologies" data-i18n="nav.technologies">Tecnologías</a></li>
                     <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
+                <span class="nav-indicator" id="nav-indicator"></span>
             </nav>
             <div class="header-actions">
+                <button class="palette-trigger" id="palette-trigger" aria-label="Buscar">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <span class="pt-label" data-i18n="palette.triggerLabel">Buscar</span>
+                    <kbd>⌘K</kbd>
+                </button>
                 <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
-                    <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"/>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                    </svg>
-                    <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
+                    <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
                 <div class="lang-selector">
                     <button id="lang-btn" class="icon-btn">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         <span id="current-lang">ES</span>
                     </button>
                     <div id="lang-dropdown" class="dropdown">
@@ -69,449 +65,273 @@
                     </div>
                 </div>
                 <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Menú">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12h18M3 6h18M3 18h18"/>
-                    </svg>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="hero">
-        <div class="hero-bg"></div>
+        <div class="blob-field"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
         <div class="container">
             <div class="hero-content">
-                <p class="hero-greeting" data-i18n="hero.greeting">Hola, soy</p>
-                <h1 class="hero-title">Younes Laghzali</h1>
-                <div class="hero-subtitle">
-                    <span class="typing-text" id="typing-text"></span>
-                    <span class="cursor">|</span>
+                <div class="role-pill hero-reveal" style="transition-delay:0.02s">
+                    <span class="dot"></span><span data-i18n="hero.basedPill">Basado en España</span>
                 </div>
-                <p class="hero-description" data-i18n="hero.description">
+                <h1 class="hero-title">
+                    <span class="reveal-line"><span>Younes Laghzali</span></span>
+                </h1>
+                <div class="hero-subtitle hero-reveal" style="transition-delay:0.16s">
+                    <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
+                </div>
+                <p class="hero-description hero-reveal" style="transition-delay:0.24s" data-i18n="hero.description">
                     Especialista en Ciberseguridad con experiencia en pentesting, análisis de vulnerabilidades, implementación de SIEM y cumplimiento normativo ISO 27001.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary" data-i18n="hero.cta">Contactar</a>
-                    <a href="#projects" class="btn btn-secondary" data-i18n="hero.projects">Ver Proyectos</a>
-                    <button id="download-cv-btn" class="btn btn-cv" title="Descargar CV">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; margin-right: 6px; display: inline-block;">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        CV
+                <div class="hero-buttons hero-reveal" style="transition-delay:0.32s">
+                    <a href="#contact" class="btn btn-primary" data-magnetic data-i18n="hero.cta">Contactar</a>
+                    <a href="#projects" class="btn btn-secondary" data-magnetic data-i18n="hero.projects">Ver Proyectos</a>
+                </div>
+                <div class="ghost-links hero-reveal" style="transition-delay:0.38s">
+                    <button id="download-cv-btn" class="btn-cv">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon" style="display:inline-block;width:14px;height:14px;margin-right:5px;vertical-align:-2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span data-i18n="hero.downloadCv">Descargar CV</span>
                     </button>
-                    <button id="view-certificate-btn" class="btn btn-cert" title="Ver Certificado">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; margin-right: 6px; display: inline-block;">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <path d="M12 18c-1.5-1-3-1.5-4-1m4 0c1.5-1 3-1.5 4-1"/>
-                        </svg>
-                        Certificado
+                    <button id="view-certificate-btn" class="btn-cert">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon" style="display:inline-block;width:14px;height:14px;margin-right:5px;vertical-align:-2px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span data-i18n="hero.viewCert">Ver Certificado</span>
                     </button>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">13+</span>
-                        <span class="stat-label" data-i18n="hero.stats.projects">Proyectos</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label" data-i18n="hero.stats.tools">Herramientas</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label" data-i18n="hero.stats.languages">Idiomas</span>
-                    </div>
+                <div class="hero-stats hero-reveal" style="transition-delay:0.44s">
+                    <div class="stat"><span class="stat-number">13+</span><span data-i18n="hero.stats.projects">Proyectos</span></div>
+                    <div class="stat"><span class="stat-number">5+</span><span data-i18n="hero.stats.tools">Herramientas</span></div>
+                    <div class="stat"><span class="stat-number">3</span><span data-i18n="hero.stats.languages">Idiomas</span></div>
                 </div>
             </div>
         </div>
         <a href="#about" class="scroll-indicator">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </a>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="about.title">Sobre Mí</h2>
-            <div class="about-content">
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="about.eyebrow">Perfil</span>
+                <h2 class="section-title" data-i18n="about.title">Sobre Mí</h2>
+            </div>
+            <div class="about-grid">
                 <div class="about-text animate-on-scroll">
-                    <p data-i18n="about.p1">
-                        Soy un especialista de la ciberseguridad  especializado en proteger infraestructuras digitales y garantizar el cumplimiento normativo.
-                    </p>
-                    <p data-i18n="about.p2">
-                        Mi experiencia abarca desde pruebas de penetración y análisis forense hasta la implementación de sistemas SIEM como Wazuh y Splunk. Trabajo con marcos de referencia como ISO 27001, NIST y OWASP Top 10.
-                    </p>
+                    <p data-i18n="about.p1">Soy un especialista de la ciberseguridad especializado en proteger infraestructuras digitales y garantizar el cumplimiento normativo.</p>
+                    <p data-i18n="about.p2">Mi experiencia abarca desde pruebas de penetración y análisis forense hasta la implementación de sistemas SIEM como Wazuh y Splunk. Trabajo con marcos de referencia como ISO 27001, NIST y OWASP Top 10.</p>
+                    <p data-i18n="about.p3">Comprometido con la mejora continua y el aprendizaje de nuevas tecnologías para mantenerme a la vanguardia en un campo que evoluciona constantemente.</p>
                 </div>
-                <div class="about-skills animate-on-scroll">
-                    <h3 data-i18n="about.skills">Habilidades Clave</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                </svg>
-                            </span>
-                            <span>Pentesting</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                </svg>
-                            </span>
-                            <span>SIEM</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                </svg>
-                            </span>
-                            <span>ISO 27001</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <line x1="12" y1="8" x2="12" y2="12"/>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                                </svg>
-                            </span>
-                            <span>Blue team</span>
-                        </div>
+                <div class="skill-pills animate-on-scroll">
+                    <div class="skill-pill">
+                        <div class="skill-pill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <span>Pentesting</span>
+                    </div>
+                    <div class="skill-pill">
+                        <div class="skill-pill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+                        <span>SIEM</span>
+                    </div>
+                    <div class="skill-pill">
+                        <div class="skill-pill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
+                        <span>ISO 27001</span>
+                    </div>
+                    <div class="skill-pill">
+                        <div class="skill-pill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r="0.5" fill="currentColor"/></svg></div>
+                        <span>Blue Team</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Services -->
+    <section id="services" class="section section-alt">
+        <div class="container">
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="services.eyebrow">Lo que ofrezco</span>
+                <h2 class="section-title" data-i18n="services.title">Servicios</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card spot-card animate-on-scroll">
+                    <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3 data-i18n="services.pentesting.title">Pentesting</h3>
+                    <p data-i18n="services.pentesting.desc">Pruebas de penetración para identificar vulnerabilidades en sistemas, redes y aplicaciones web.</p>
+                </div>
+                <div class="service-card spot-card animate-on-scroll">
+                    <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="10" rx="2"/><path d="M8 20h8M12 14v6"/></svg></div>
+                    <h3 data-i18n="services.siem.title">Implementación SIEM</h3>
+                    <p data-i18n="services.siem.desc">Configuración y gestión de sistemas SIEM con Wazuh, Splunk y otras herramientas de monitorización.</p>
+                </div>
+                <div class="service-card spot-card animate-on-scroll">
+                    <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg></div>
+                    <h3 data-i18n="services.audit.title">Auditorías de Seguridad</h3>
+                    <p data-i18n="services.audit.desc">Evaluaciones completas de seguridad siguiendo estándares ISO 27001 y NIST.</p>
+                </div>
+                <div class="service-card spot-card animate-on-scroll">
+                    <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M9 11h4"/></svg></div>
+                    <h3 data-i18n="services.forensics.title">Análisis Forense</h3>
+                    <p data-i18n="services.forensics.desc">Investigación de incidentes de seguridad y recuperación de evidencias digitales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="projects.title">Proyectos</h2>
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="projects.eyebrow">Trabajo seleccionado</span>
+                <h2 class="section-title" data-i18n="projects.title">Proyectos</h2>
+            </div>
             <div class="projects-grid">
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/encryption_system" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/encryption_system" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3>CryptoVault</h3>
                     <p data-i18n="projects.cryptovault.desc">Encriptador de archivos AES-256-GCM con derivación PBKDF2. Procesamiento 100% local en el navegador sin enviar datos a servidores.</p>
-                    <div class="project-tags">
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">AES-256</span>
-                        <span class="tag">PBKDF2</span>
-                        <span class="tag">Next.js</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">AES-256</span><span class="tag">PBKDF2</span><span class="tag">Next.js</span></div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/network_scan.py" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/network_scan.py" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3>Network Security Scanner</h3>
                     <p data-i18n="projects.scanner.desc">Escáner de seguridad de red en Python que analiza puertos comunes, detecta vulnerabilidades y ofrece recomendaciones automáticas.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Nmap</span>
-                        <span class="tag">Security</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">Python</span><span class="tag">Nmap</span><span class="tag">Security</span></div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="M21 21l-4.35-4.35"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/analisis_forense" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/analisis_forense" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3 data-i18n="projects.forensics.title">Análisis Forense</h3>
                     <p data-i18n="projects.forensics.desc">Documentación y herramientas para análisis forense digital, incluyendo metodologías de investigación y recuperación de evidencias.</p>
-                    <div class="project-tags">
-                        <span class="tag">Forensics</span>
-                        <span class="tag">Documentation</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">Forensics</span><span class="tag">Documentation</span></div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/Proyecto-Final-de-Ciberseguridad" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/Proyecto-Final-de-Ciberseguridad" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3 data-i18n="projects.final.title">Proyecto Final Ciberseguridad</h3>
                     <p data-i18n="projects.final.desc">Proyecto integral de ciberseguridad que incluye análisis de vulnerabilidades, implementación de medidas de seguridad y documentación.</p>
-                    <div class="project-tags">
-                        <span class="tag">Security</span>
-                        <span class="tag">SIEM</span>
-                        <span class="tag">ISO 27001</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">Security</span><span class="tag">SIEM</span><span class="tag">ISO 27001</span></div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/password_manager" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/password_manager" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3>Password Manager</h3>
                     <p data-i18n="projects.password.desc">Gestor de contraseñas desarrollado en C++ con encriptación segura para almacenamiento local de credenciales.</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">Encryption</span>
-                        <span class="tag">Security</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">C++</span><span class="tag">Encryption</span><span class="tag">Security</span></div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/younesrest/pentesting-report-prevention-proposal-project" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
+                <div class="project-card spot-card animate-on-scroll">
+                    <div class="project-head">
+                        <div class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
+                        <div class="project-links"><a href="https://github.com/younesrest/pentesting-report-prevention-proposal-project" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a></div>
                     </div>
                     <h3 data-i18n="projects.report.title">Pentesting Report</h3>
                     <p data-i18n="projects.report.desc">Plantilla profesional de informes de pentesting con propuestas de prevención y recomendaciones de seguridad.</p>
-                    <div class="project-tags">
-                        <span class="tag">Pentesting</span>
-                        <span class="tag">Reports</span>
-                        <span class="tag">OWASP</span>
-                    </div>
+                    <div class="project-tags"><span class="tag">Pentesting</span><span class="tag">Reports</span><span class="tag">OWASP</span></div>
                 </div>
+
             </div>
             <div class="projects-cta animate-on-scroll">
-                <a href="https://github.com/younesrest" target="_blank" rel="noopener" class="btn btn-secondary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                <a href="https://github.com/younesrest" target="_blank" rel="noopener" class="btn btn-secondary" data-magnetic>
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     <span data-i18n="projects.viewAll">Ver todos los proyectos</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Technologies Section -->
+    <!-- Technologies -->
     <section id="technologies" class="section section-alt">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="technologies.title">Tecnologías</h2>
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="technologies.eyebrow">Stack</span>
+                <h2 class="section-title" data-i18n="technologies.title">Tecnologías</h2>
+            </div>
             <div class="tech-grid">
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <span>Metasploit</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="M21 21l-4.35-4.35"/>
-                        </svg>
-                    </div>
-                    <span>Nessus</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <span>Wazuh</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                        </svg>
-                    </div>
-                    <span>Splunk</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                    </div>
-                    <span>Nmap</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"/>
-                            <polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <span>Python</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </div>
-                    <span>Wireshark</span>
-                </div>
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="3" y1="9" x2="21" y2="9"/>
-                            <line x1="9" y1="21" x2="9" y2="9"/>
-                        </svg>
-                    </div>
-                    <span>Burp Suite</span>
-                </div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span>Metasploit</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><span>Nessus</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><span>Wazuh</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><span>Splunk</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><span>Nmap</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><span>Python</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><span>Wireshark</span></div>
+                <div class="tech-item animate-on-scroll"><div class="tech-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><span>Burp Suite</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Languages Section -->
+    <!-- Languages -->
     <section id="languages" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="languages.title">Idiomas</h2>
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="languages.eyebrow">Comunicación</span>
+                <h2 class="section-title" data-i18n="languages.title">Idiomas</h2>
+            </div>
             <div class="languages-grid">
                 <div class="language-card animate-on-scroll">
-                    <div class="language-flag">ES</div>
                     <h3 data-i18n="languages.spanish">Español</h3>
                     <p data-i18n="languages.native">Nativo</p>
-                    <div class="language-bar">
-                        <div class="language-progress" style="width: 100%"></div>
-                    </div>
+                    <div class="language-bar"><div class="language-progress" style="width: 100%"></div></div>
                 </div>
                 <div class="language-card animate-on-scroll">
-                    <div class="language-flag">EN</div>
                     <h3 data-i18n="languages.english">Inglés</h3>
                     <p data-i18n="languages.advanced">Avanzado</p>
-                    <div class="language-bar">
-                        <div class="language-progress" style="width: 85%"></div>
-                    </div>
+                    <div class="language-bar"><div class="language-progress" style="width: 85%"></div></div>
                 </div>
                 <div class="language-card animate-on-scroll">
-                    <div class="language-flag">FR</div>
                     <h3 data-i18n="languages.french">Francés</h3>
                     <p data-i18n="languages.intermediate">Intermedio</p>
-                    <div class="language-bar">
-                        <div class="language-progress" style="width: 60%"></div>
-                    </div>
+                    <div class="language-bar"><div class="language-progress" style="width: 60%"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="section section-alt">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="contact.title">Contacto</h2>
+            <div class="section-head animate-on-scroll">
+                <span class="section-eyebrow" data-i18n="contact.eyebrow">Hablemos</span>
+                <h2 class="section-title" data-i18n="contact.title">Contacto</h2>
+            </div>
             <div class="contact-content">
-                <div class="contact-info animate-on-scroll">
-                    <p data-i18n="contact.description">¿Interesado en colaborar o tienes alguna pregunta? No dudes en contactarme.</p>
-                    <div class="contact-links">
-                        <a href="mailto:younes@rests.info" class="contact-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                            <span>younes@rests.info</span>
-                        </a>
-                        <a href="https://github.com/younesrest" target="_blank" rel="noopener" class="contact-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            <span>github.com/younesrest</span>
-                        </a>
-                        <a href="https://rests.info" target="_blank" rel="noopener" class="contact-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                            <span>rests.info</span>
-                        </a>
-                        <div class="contact-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span data-i18n="contact.location">España</span>
-                        </div>
+                <p class="animate-on-scroll" style="text-align:center;color:var(--muted);margin-bottom:2.25rem;" data-i18n="contact.description">¿Interesado en colaborar o tienes alguna pregunta? No dudes en contactarme.</p>
+                <div class="contact-links animate-on-scroll">
+                    <a href="mailto:youlal2019@gmail.com" class="contact-link">
+                        <div class="contact-link-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <div class="contact-link-text"><span class="contact-link-label" data-i18n="contact.emailLabel">Email</span><span class="contact-link-value">youlal2019@gmail.com</span></div>
+                    </a>
+                    <a href="https://github.com/younesrest" target="_blank" rel="noopener" class="contact-link">
+                        <div class="contact-link-icon"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
+                        <div class="contact-link-text"><span class="contact-link-label">GitHub</span><span class="contact-link-value">github.com/younesrest</span></div>
+                    </a>
+                    <a href="https://rests.info" target="_blank" rel="noopener" class="contact-link">
+                        <div class="contact-link-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                        <div class="contact-link-text"><span class="contact-link-label" data-i18n="contact.siteLabel">Sitio web</span><span class="contact-link-value">rests.info</span></div>
+                    </a>
+                    <div class="contact-link" style="cursor:default;">
+                        <div class="contact-link-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div class="contact-link-text"><span class="contact-link-label" data-i18n="contact.locationLabel">Ubicación</span><span class="contact-link-value" data-i18n="contact.location">España</span></div>
                     </div>
                 </div>
             </div>
@@ -522,22 +342,29 @@
     <footer id="footer">
         <div class="container">
             <div class="footer-content">
-                <a href="#" class="logo">
-                    <span class="logo-bracket">&lt;</span>
-                    <span class="logo-text">YL</span>
-                    <span class="logo-bracket">/&gt;</span>
-                </a>
+                <a href="#hero" class="logo"><span class="logo-bracket">&lt;</span><span class="logo-text">YL</span><span class="logo-bracket">/&gt;</span></a>
                 <p data-i18n="footer.copyright">&copy; 2026 Younes Laghzali. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button id="back-to-top" aria-label="Volver arriba">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </button>
+
+    </div><!-- /#page-content -->
+
+    <!-- Command palette -->
+    <div class="palette-overlay" id="command-palette">
+        <div class="palette-modal">
+            <div class="palette-input-row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" id="palette-input" placeholder="Ir a..." autocomplete="off">
+                <kbd style="font-size:0.68rem;font-weight:700;color:var(--muted-2);">ESC</kbd>
+            </div>
+            <div class="palette-results" id="palette-results"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
